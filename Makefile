@@ -16,7 +16,7 @@ hash-password: ### make hash password
 compose-up: ### Some text
 	@docker network create jitsi-chromium-net
 	@docker volume create jitsi-chromium-data
-	@docker run --detach --restart=always --volume=jitsi-chromium-data:/data --net=jitsi-chromium-net --name=jitsi-chromium-app jitsi-chromium
+	@docker run --detach --restart=always --volume=jitsi-chromium-data:/data --net=jitsi-chromium-net --name=jitsi-chromium-app --cap-add=SYS_ADMIN jitsi-chromium
 	@docker run --detach --restart=always --volume=jitsi-chromium-data:/data --net=jitsi-chromium-net --name=jitsi-chromium-web --env=APP_USERNAME="${USERNAME}" --env=APP_PASSWORD_HASH="$(shell docker run --rm -it jitsi-chromium-caddy caddy hash-password -plaintext '${PASSWORD}')" --publish=${PORT}:8888 jitsi-chromium-caddy
 .PHONY: compose-up
 

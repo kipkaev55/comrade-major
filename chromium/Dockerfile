@@ -19,6 +19,8 @@ RUN apt-get update -y && \
     apt-get install -y --no-install-recommends chromium && \
     rm -rf /var/lib/apt/lists
 
+RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
+
 COPY --from=easy-novnc-build /bin/easy-novnc /usr/local/bin/
 COPY menu.xml /etc/xdg/openbox/
 COPY supervisord.conf /etc/
