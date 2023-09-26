@@ -4,7 +4,7 @@
 :8888 {
     log
     root * /data
-    reverse_proxy jitsi-chromium-app:8888
+    reverse_proxy jitsi-x11-app:8888
 
     handle_path /files/* {         
         file_server browse

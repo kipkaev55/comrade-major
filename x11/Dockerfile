@@ -16,7 +16,7 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists
 
 RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends chromium && \
+    apt-get install -y --no-install-recommends chromium firefox-esr libavcodec-dev && \
     rm -rf /var/lib/apt/lists
 
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
